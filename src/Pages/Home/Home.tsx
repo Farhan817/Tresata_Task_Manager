@@ -1,39 +1,32 @@
 "use client";
-import { useState } from "react";
-import { Plus, ChevronUp, ChevronDown, Expand } from "lucide-react";
-import Button from "../../components/UI/Button";
-import Input from "../../components/UI/Input";
+
+import { FC } from "react";
 import Search from "../../components/Search/Search";
-import Header from "../../components/Header/Header";
+
 import Expandable from "../../components/Expandables/Expandable";
 import TaskTile from "../../components/TaskTile/TaskTile";
 import FloatingButton from "../../components/FloatingButton/FloatingButton";
 import useHome from "./hook/useHome";
+import { ExpandedSections, FormattedTask, Task } from "../../utils/Types";
+import React from "react";
 
-const todoItems = [
-  {
-    id: "1",
-    title: "Lorem Ipsum",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    status: "In Progress",
-    date: "Wed 31, July 2019",
-    initial: "L",
-  },
-  {
-    id: "2",
-    title: "Lorem Ipsum",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    status: "In Progress",
-    date: "Wed 31, July 2019",
-    initial: "L",
-  },
-];
+// Define the task type
 
 const Home = () => {
-  const [{ expandedSections }, { toggleSection, handelEdit, handelDelete }] =
-    useHome();
+  const [
+    { expandedSections, formatedtask },
+    { toggleSection, handelEdit, handelDelete },
+  ]: [
+    {
+      expandedSections: ExpandedSections;
+      formatedtask: FormattedTask;
+    },
+    {
+      toggleSection: (section: keyof ExpandedSections) => void;
+      handelEdit: (item: Task) => void;
+      handelDelete: (itemId: string) => void;
+    },
+  ] = useHome();
 
   return (
     <>
@@ -41,14 +34,15 @@ const Home = () => {
 
       <div className="px-6 pb-20">
         <Expandable
-          title={`In Progress (${todoItems.length})`}
+          title={`In Progress (${formatedtask?.inprogres.length})`}
           status={expandedSections.inProgress}
           onToggle={() => toggleSection("inProgress")}
         >
           {expandedSections.inProgress && (
-            <div className="space-y-3">
-              {todoItems.map((item) => (
+            <div className="space-y-3 mt-3">
+              {formatedtask?.inprogres.map((item) => (
                 <TaskTile
+                  key={item.id}
                   item={item}
                   handelEdit={handelEdit}
                   handelDelete={handelDelete}
@@ -57,15 +51,17 @@ const Home = () => {
             </div>
           )}
         </Expandable>
+
         <Expandable
-          title={`Pending (${todoItems.length})`}
+          title={`Pending (${formatedtask?.pending.length})`}
           status={expandedSections.pending}
           onToggle={() => toggleSection("pending")}
         >
           {expandedSections.pending && (
-            <div className="space-y-3">
-              {todoItems.map((item) => (
+            <div className="space-y-3 mt-3">
+              {formatedtask?.pending.map((item) => (
                 <TaskTile
+                  key={item.id}
                   item={item}
                   handelEdit={handelEdit}
                   handelDelete={handelDelete}
@@ -74,15 +70,17 @@ const Home = () => {
             </div>
           )}
         </Expandable>
+
         <Expandable
-          title={`Completed (${todoItems.length})`}
+          title={`Completed (${formatedtask?.complete.length})`}
           status={expandedSections.completed}
           onToggle={() => toggleSection("completed")}
         >
           {expandedSections.completed && (
-            <div className="space-y-3">
-              {todoItems.map((item) => (
+            <div className="space-y-3 mt-3">
+              {formatedtask?.complete.map((item) => (
                 <TaskTile
+                  key={item.id}
                   item={item}
                   handelEdit={handelEdit}
                   handelDelete={handelDelete}
@@ -92,6 +90,7 @@ const Home = () => {
           )}
         </Expandable>
       </div>
+
       <FloatingButton />
     </>
   );

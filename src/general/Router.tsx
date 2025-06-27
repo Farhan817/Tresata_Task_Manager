@@ -1,12 +1,13 @@
+import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { RoutePaths } from "./RoutePaths.jsx";
-import { Layout } from "./Layout.jsx";
+import { RoutePaths } from "./RoutePaths";
+import Layout from "./Layout";
 
-console.log(RoutePaths, "RoutePaths");
-export const Router = () => (
+export const Router: React.FC = () => (
   <Routes>
     {RoutePaths.map((item) => (
       <Route
+        key={item.path} // ✅ add key to avoid warning
         path={item.path}
         element={
           <Layout title={item.title} isBack={item.isBack}>
