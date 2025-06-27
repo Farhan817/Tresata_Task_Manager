@@ -1,43 +1,45 @@
-## React + Vite + TailwindCSS template
+# 📝 TypeScript To-Do App
 
-Create your own project based on this template by running:
+A minimal yet structured To-Do application built using **React**, **Redux Toolkit**, and **TypeScript**. It supports task management features like adding, editing, deleting, and categorizing tasks by status.
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
 
 ```bash
-npx degit quavedev/react-vite-tailwindcss-template your-project
+git clone https://github.com/Farhan817/Tresata_Task_Manager.git
+cd Tresata_Task_Manager
 ```
 
-## Install
+### 2. Install dependencies
 
 ```bash
 npm install
+# or
+yarn install
 ```
 
-> You can make sure you are running Node.js 18 with `nvm`. Run `nvm use` to set the Node.js 18 in this project.
-
-## Develop
+### 3.Start the development server
 
 ```bash
 npm run dev
+# or
+yarn dev
+
 ```
 
-## Build
+App will be available at http://localhost:5173 (for Vite).
 
-```bash
-npm build
-```
+### 4 Tech Stack
 
-Preview:
-
-```bash
-npm run preview
-```
-
-## Deploy on zCloud
-
-Create your account at [zcloud.ws](https://zcloud.ws).
-
-Connect to your GitHub, create your app and done!
-
-Push to Deploy.
-
-Or use the preconfigured [action](./.github/workflows/deploy.yaml) to deploy your app. Uncomment all the lines and add your zCloud User Token (ZCLOUD_USER_TOKEN) to your secrets on GitHub and replace `env` placeholder value with your app env name (check it on app.zcloud.ws > Your app env > Settings).
+- React (with TSX and hooks)
+- Redux Persist (For Storing the redux data in localStorage)
+- Redux Toolkit – Global state management
+- TypeScript – Type safety and better dev experience
+- Formik + Yup – Form handling and validation
+- Tailwind CSS – Utility-first styling
+- Day.js – Lightweight date formatting
+- Lucide Icons – Clean and consistent icons
+- React Router DOM – Routing between views
