@@ -1,6 +1,6 @@
-# 📝 TypeScript To-Do App
+# 📝 TypeScript Task Managment App
 
-A minimal yet structured To-Do application built using **React**, **Redux Toolkit**, and **TypeScript**. It supports task management features like adding, editing, deleting, and categorizing tasks by status.
+A minimal yet structured Task Managment application built using **React**, **Redux Toolkit**, and **TypeScript**. It supports task management features like adding, editing, deleting, and categorizing tasks by status.
 
 ---
 
