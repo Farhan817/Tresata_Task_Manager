@@ -64,9 +64,9 @@ export const createAddTaskPayload = (
 ): Task => {
   return {
     ...formData,
-    id: formData.id ?? uuidv6(),
-    status: formData.status.value ?? "pending",
-    createdAt: formData.createdAt ?? dayjs().toISOString(),
+    id:  uuidv6(),
+    status:  "pending",
+    createdAt: dayjs().toISOString(),
   } as Task;
 };
 
